@@ -18,3 +18,12 @@
 - doctor can change or create new services
 
 
+## Note
+#### admin email
+```bash
+arkoroyb@gmail.com
+```
+#### admin password
+```bash
+1234
+```
