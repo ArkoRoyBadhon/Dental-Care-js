@@ -81,7 +81,7 @@ const Dashboard = () => {
               Service
             </Typography>
           </ButtonBase>
-          <ButtonBase
+          {/* <ButtonBase
             sx={{
               ...style,
               color: val === 2 ? "white" : "#666666",
@@ -100,7 +100,7 @@ const Dashboard = () => {
             >
               Blog
             </Typography>
-          </ButtonBase>
+          </ButtonBase> */}
           <ButtonBase
             sx={{
               ...style,

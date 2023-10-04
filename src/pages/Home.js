@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { useGetUserQuery } from "../app/features/users/userApi";
 import { useDispatch, useSelector } from "react-redux";
 import { clearUser, setUser } from "../app/features/users/userSlice";
+import SliderCustomer from "../components/Home/SliderCustomer";
 
 const Home = () => {
   // const dispatch = useDispatch();
@@ -30,7 +31,8 @@ const Home = () => {
       <Banner />
       <ShowCase />
       <WelcomeCom />
-      <PatientsSay />
+      <SliderCustomer />
+      {/* <PatientsSay /> */}
     </Box>
   );
 };
