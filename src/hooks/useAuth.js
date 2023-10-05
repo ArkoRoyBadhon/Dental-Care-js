@@ -16,7 +16,7 @@ const useAuth = () => {
         isManager = role.includes('manager')
         isAdmin = role.includes('admin')
 
-        console.log("ADMINSS", isAdmin);
+        // console.log("ADMINSS", isAdmin);
 
         if (isManager) status = "manager"
         if (isAdmin) status = "admin"

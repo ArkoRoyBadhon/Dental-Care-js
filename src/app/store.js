@@ -22,14 +22,12 @@ const persistedReducer = persistReducer(persistConfig, reducer);
 export const store = configureStore({
   reducer: {
     [apiSlice.reducerPath]: apiSlice.reducer,
-    // auth: authReducer,
     persisted: persistedReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
     }).concat(apiSlice.middleware),
-  // devTools: false
 });
 
 setupListeners(store.dispatch);

@@ -8,8 +8,9 @@ import Dashboard from "../pages/Dashboard";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import ErrorPage from "../pages/ErrorPage";
-import PrivateRoute from "../pages/PrivateRoute";
 import RequireAuth from "../components/RequireAuth";
+import Appointment from "../pages/Appointment";
+import MyAppointment from "../pages/MyAppointment";
 
 const routes = createBrowserRouter([
   {
@@ -31,6 +32,14 @@ const routes = createBrowserRouter([
       {
         path: "/services",
         element: <Services />,
+      },
+      {
+        path: "/appointment",
+        element: <Appointment />,
+      },
+      {
+        path: "/my-appointment",
+        element: <MyAppointment />,
       },
       {
         path: "/dashboard",

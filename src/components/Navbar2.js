@@ -24,6 +24,7 @@ import { useSendLogoutMutation } from "../app/features/auth/authApiSlice";
 import { clearUser, setUser } from "../app/features/users/userSlice";
 import { logOut, setCredentials } from "../app/features/auth/authSlice";
 import { useGetUserQuery } from "../app/features/users/userApi";
+import jwtDecode from "jwt-decode";
 
 const MyDrawer = styled("div")({
   width: 300,
@@ -32,14 +33,11 @@ const MyDrawer = styled("div")({
 const Navbar2 = () => {
   const currentPath = window.location.pathname;
   const [drawerOpen, setDrawerOpen] = useState(false);
+  // const { user } = useSelector((state) => state.persisted.user);
   const { user } = useSelector((state) => state.persisted.user);
+  const token = useSelector((state) => state.persisted.auth);
   const dispatch = useDispatch();
   const [sendLogout] = useSendLogoutMutation();
-
-  // get user
-  const token = useSelector((state) => state.persisted.auth);
-  const { data: userData, isSuccess } = useGetUserQuery();
-  // const MM = useSelector((state) => state.persisted.user.user);
 
   const toggleDrawer = (open) => (event) => {
     if (
@@ -62,10 +60,15 @@ const Navbar2 = () => {
     });
   };
 
-   useEffect(() => {
-    if (isSuccess && userData?.length > 0 && token) {
-      // console.log("LOgout", token);
-      dispatch(setUser(userData));
+  useEffect(() => {
+    if (token.token) {
+      const decoded = jwtDecode(token.token);
+      const { email, role } = decoded.UserInfo;
+      const userDetail = {
+        email,
+        role,
+      };
+      dispatch(setUser({ ...userDetail }));
     }
   }, [dispatch, token]);
 
@@ -263,7 +266,6 @@ const Navbar2 = () => {
     </MyDrawer>
   );
 
-
   // console.log("SS", user);
 
   return (
@@ -395,7 +397,7 @@ const Navbar2 = () => {
             <Link
               sx={{
                 fontWeight: "600",
-                ...(currentPath === "/blog"
+                ...(currentPath === "/my-appointment"
                   ? {
                       borderBottom: "2px solid gray",
                       color: colors.red[500],
@@ -408,11 +410,11 @@ const Navbar2 = () => {
                 },
               }}
               underline="none"
-              href="/blog"
+              href="/my-appointment"
             >
-              Blog
+              My Appointment
             </Link>
-            { user && user[0]?.role === "admin" && (
+            {user && user?.role === "admin" && (
               <Link
                 sx={{
                   fontWeight: "600",
@@ -433,7 +435,7 @@ const Navbar2 = () => {
               >
                 Dashboard
               </Link>
-             )}
+            )}
           </Box>
           <Box
             sx={{
@@ -446,7 +448,7 @@ const Navbar2 = () => {
               <FacebookIcon />
               <MailIcon />
             </Box>
-            {user ? (
+            {token.token ? (
               <Box
                 sx={{ cursor: "pointer", color: "#666666", fontWeight: "600" }}
                 onClick={() => handleLogout()}

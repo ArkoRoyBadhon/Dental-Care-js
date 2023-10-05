@@ -1,6 +1,6 @@
 import { Box, Button, Typography } from "@mui/material";
 import bannerImg from "../../assets/pexels-anna-shvets-3845625-min.jpg";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Banner = () => {
   const navigate = useNavigate();
@@ -55,7 +55,12 @@ const Banner = () => {
             sx={{ width: "300px", marginTop: "20px" }}
             variant="contained"
           >
+            <Link style={{
+              textDecoration: "none",
+              color: "#fff"
+            }} to="/appointment">
             Request an appointment
+            </Link>
           </Button>
         </Box>
         <Box flex={1}>

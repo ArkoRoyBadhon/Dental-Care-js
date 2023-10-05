@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, CircularProgress, Grid, Typography } from "@mui/material";
 import { useGetServicesQuery } from "../app/features/service/serviceApi";
 
 const CardStyle = {
@@ -10,7 +10,20 @@ const CardStyle = {
   borderRadius: "5px",
 };
 const Services = () => {
-  const { data: serviceData } = useGetServicesQuery();
+  const { data: serviceData, isLoading } = useGetServicesQuery();
+
+
+  if(isLoading) {
+    return <Box height="80vh" width="100vw" sx={{
+      display: 'flex',
+      justifyContent: "center",
+      alignItems: "center"
+    }}>
+      <CircularProgress />
+    </Box>
+  }
+  
+
   return (
     <Box
       sx={{
@@ -23,7 +36,8 @@ const Services = () => {
       <Typography
         sx={{
           fontWeight: "600",
-          fontSize: "22px",
+          fontSize: "24px",
+          borderBottom: "4px solid gray",
         }}
       >
         Our Services

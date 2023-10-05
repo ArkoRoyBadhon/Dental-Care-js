@@ -2,8 +2,8 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { setCredentials } from "../features/auth/authSlice";
 
 const baseQuery = fetchBaseQuery({
-//   baseUrl: "https://t-server-seven.vercel.app",
-  baseUrl: 'http://localhost:5000',
+  //   baseUrl: "https://t-server-seven.vercel.app",
+  baseUrl: "http://localhost:5000",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = getState().persisted.auth.token;
@@ -19,7 +19,6 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
   let result = await baseQuery(args, api, extraOptions);
 
   if (result?.error?.status === 403) {
-
     const refreshResult = await baseQuery("/auth/refresh", api, extraOptions);
 
     if (refreshResult?.data) {
@@ -38,6 +37,6 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
 
 export const apiSlice = createApi({
   baseQuery: baseQueryWithReauth,
-  tagTypes: ["Note", "User", "image"],
+  tagTypes: ["appointment", "User", "image"],
   endpoints: (builder) => ({}),
 });
