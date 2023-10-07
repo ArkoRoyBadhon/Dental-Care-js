@@ -7,8 +7,8 @@ const RequireAuth = ({ allowedRoles }) => {
     const location = useLocation()
     const { role } = useAuth()
 
-    console.log("ALLOW", allowedRoles);
-    console.log("role", role);
+    // console.log("ALLOW", allowedRoles);
+    // console.log("role", role);
 
     const content = (
         Array.isArray(allowedRoles) && allowedRoles.includes(role)

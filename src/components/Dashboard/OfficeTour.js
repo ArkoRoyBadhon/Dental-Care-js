@@ -89,16 +89,18 @@ const OfficeTour = () => {
 
       const responseData = await response.json();
       // console.log("Image uploaded:", responseData.data.url);
-      const id = user && user.length > 0 ? user[0]._id : null;
+      // const emailData = user ? user?.email : null;
       const payload = {
         url: responseData?.data?.url,
-        uploadedBy: id,
+        uploadedEmail: user?.email,
       };
-      // const officeInfo = {
-      //   data: payload,
-      // };
+      // console.log("AAAAAAAAA", user.email);
+      const officeInfo = {
+        data: payload,
+      };
       await createImages(payload);
       setImage(null);
+
     } catch (error) {
       console.error("Error uploading image:", error);
     }

@@ -15,16 +15,14 @@ const style = {
 
 const Dashboard = () => {
   const [val, setVal] = useState(1);
-  const filtered = dashboardItem.filter(
-    (item) => item.id === val
-  );
+  const filtered = dashboardItem.filter((item) => item.id === val);
 
   return (
     <Box
       sx={{
         paddingX: {
           xs: "10px",
-          md: "60px"
+          md: "60px",
         },
         minHeight: "100vh",
       }}
@@ -51,13 +49,13 @@ const Dashboard = () => {
             },
             borderBottom: {
               xs: "4px solid gray",
-              md: "0px"
+              md: "0px",
             },
             paddingRight: "10px",
             paddingBottom: {
               xs: "10px",
-              md: "0px"
-            }
+              md: "0px",
+            },
           }}
         >
           {/* <CustomBox>Hello</CustomBox> */}
@@ -81,7 +79,7 @@ const Dashboard = () => {
               Service
             </Typography>
           </ButtonBase>
-          {/* <ButtonBase
+          <ButtonBase
             sx={{
               ...style,
               color: val === 2 ? "white" : "#666666",
@@ -98,9 +96,9 @@ const Dashboard = () => {
               }}
               fontSize="1.2rem"
             >
-              Blog
+              Appointments
             </Typography>
-          </ButtonBase> */}
+          </ButtonBase>
           <ButtonBase
             sx={{
               ...style,

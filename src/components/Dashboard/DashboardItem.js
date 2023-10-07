@@ -1,5 +1,6 @@
 // import About from "./About";
-import Blog from "./Blog";
+// import Blog from "./Blog";
+import Appointment from "./Appointment";
 import OfficeTour from "./OfficeTour";
 import Phone from "./Phone";
 import Service from "./Service";
@@ -13,7 +14,7 @@ export const dashboardItem = [
     },
     {
         id: 2,
-        item: <Blog />
+        item: <Appointment />
     },
     {
         id: 3,

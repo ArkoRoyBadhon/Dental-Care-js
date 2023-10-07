@@ -89,18 +89,18 @@ const Service = () => {
       );
 
       const responseData = await response.json();
-      console.log("Image uploaded:", responseData.data.url);
-      const id = user && user.length > 0 ? user[0]._id : null;
+      // console.log("Image uploaded:", responseData.data.url);
+      // const id = user && user.length > 0 ? user[0]._id : null;
       const payload = {
         title: data?.title,
         image: responseData?.data?.url,
-        uploadedBy: id,
+        uploadedEmail: user?.email,
       };
       // const officeInfo = {
       //   data: payload,
       // };
 
-      console.log("payload", payload);
+      // console.log("payload", payload);
 
       await createService(payload);
       setImage(null);

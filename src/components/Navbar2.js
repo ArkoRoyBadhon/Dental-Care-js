@@ -25,6 +25,7 @@ import { clearUser, setUser } from "../app/features/users/userSlice";
 import { logOut, setCredentials } from "../app/features/auth/authSlice";
 import { useGetUserQuery } from "../app/features/users/userApi";
 import jwtDecode from "jwt-decode";
+import { useGetScheduleQuery } from "../app/features/schedule/schedule";
 
 const MyDrawer = styled("div")({
   width: 300,
@@ -36,6 +37,7 @@ const Navbar2 = () => {
   // const { user } = useSelector((state) => state.persisted.user);
   const { user } = useSelector((state) => state.persisted.user);
   const token = useSelector((state) => state.persisted.auth);
+  const { data: scheduleData } = useGetScheduleQuery();
   const dispatch = useDispatch();
   const [sendLogout] = useSendLogoutMutation();
 
@@ -266,7 +268,6 @@ const Navbar2 = () => {
     </MyDrawer>
   );
 
-  // console.log("SS", user);
 
   return (
     <Box>
@@ -285,25 +286,38 @@ const Navbar2 = () => {
           alignItems="center"
           sx={{ paddingY: "5px" }}
         >
-          <Box>Doctor Care</Box>
-          <Box display="flex" gap="15px">
-            <Box display="flex" alignItems="center" gap="10px">
-              <AddIcCallIcon />
-              <Box>
-                <Typography sx={{ fontSize: "12px" }}>01755434678</Typography>
-                <Typography sx={{ fontSize: "10px" }}>
-                  24/7 Emergency Phone
-                </Typography>
-              </Box>
-            </Box>
-            <Box display="flex" alignItems="center" gap="10px">
-              <ManageHistoryIcon />
-              <Box>
-                <Typography sx={{ fontSize: "12px" }}>Monday-Friday</Typography>
-                <Typography sx={{ fontSize: "10px" }}>9AM-9PM</Typography>
-              </Box>
-            </Box>
-          </Box>
+          <Typography fontWeight="600">Doctor Care</Typography>
+          {scheduleData &&
+            scheduleData?.data.map((item) => {
+              return (
+                <Box key={item?._id} display="flex" gap="15px">
+                  <Box display="flex" alignItems="center" gap="10px">
+                    <AddIcCallIcon />
+                    <Box>
+                      <Typography sx={{ fontSize: "12px" }}>
+                        {item.phone}
+                      </Typography>
+                      <Typography sx={{ fontSize: "10px" }}>
+                        24/7 Emergency Phone
+                      </Typography>
+                    </Box>
+                  </Box>
+                  <Box display="flex" alignItems="center" gap="10px">
+                    <ManageHistoryIcon />
+                    <Box>
+                      <Typography
+                        sx={{ fontSize: "12px", textTransform: "capitalize" }}
+                      >
+                        {item?.startDay}-{item?.endDay}
+                      </Typography>
+                      <Typography sx={{ fontSize: "10px" }}>
+                        {item?.startTime}-{item?.endTime}
+                      </Typography>
+                    </Box>
+                  </Box>
+                </Box>
+              );
+            })}
         </Box>
         <Divider />
         <Box
