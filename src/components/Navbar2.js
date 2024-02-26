@@ -22,8 +22,7 @@ import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { useSendLogoutMutation } from "../app/features/auth/authApiSlice";
 import { clearUser, setUser } from "../app/features/users/userSlice";
-import { logOut, setCredentials } from "../app/features/auth/authSlice";
-import { useGetUserQuery } from "../app/features/users/userApi";
+import { logOut } from "../app/features/auth/authSlice";
 import jwtDecode from "jwt-decode";
 import { useGetScheduleQuery } from "../app/features/schedule/schedule";
 

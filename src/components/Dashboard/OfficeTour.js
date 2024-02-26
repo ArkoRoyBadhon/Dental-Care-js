@@ -95,9 +95,6 @@ const OfficeTour = () => {
         uploadedEmail: user?.email,
       };
       // console.log("AAAAAAAAA", user.email);
-      const officeInfo = {
-        data: payload,
-      };
       await createImages(payload);
       setImage(null);
 

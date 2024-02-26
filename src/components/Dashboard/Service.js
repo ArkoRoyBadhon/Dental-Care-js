@@ -77,7 +77,7 @@ const Service = () => {
     const formData = new FormData();
     formData.append("image", data.image[0]);
 
-    // console.log("title", data);
+    console.log("title doctor", data);
 
     try {
       const response = await fetch(

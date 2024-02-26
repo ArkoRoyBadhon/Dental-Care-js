@@ -46,7 +46,7 @@ const About = () => {
           <img
             style={{ width: "400px" }}
             src="https://img.freepik.com/free-photo/attractive-young-male-nutriologist-lab-coat-smiling-against-white-background_662251-2960.jpg"
-            alt="photo"
+            alt="img"
           />
         </Box>
         <Box

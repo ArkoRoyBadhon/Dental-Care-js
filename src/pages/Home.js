@@ -2,12 +2,7 @@ import Banner from "../components/Home/Banner";
 import { Box } from "@mui/material";
 import ShowCase from "../components/Home/ShowCase";
 import WelcomeCom from "../components/Home/WelcomeCom";
-import PatientsSay from "../components/Home/PatientsSay";
-import { useEffect } from "react";
 
-import { useGetUserQuery } from "../app/features/users/userApi";
-import { useDispatch, useSelector } from "react-redux";
-import { clearUser, setUser } from "../app/features/users/userSlice";
 import SliderCustomer from "../components/Home/SliderCustomer";
 
 const Home = () => {

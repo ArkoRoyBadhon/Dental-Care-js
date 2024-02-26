@@ -20,7 +20,6 @@ import {
 } from "../../app/features/appointment/appointmentApi";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { useGetScheduleQuery } from "../../app/features/schedule/schedule";
 
 const Appointment = () => {
   const [startDate, setStartDate] = useState(new Date());

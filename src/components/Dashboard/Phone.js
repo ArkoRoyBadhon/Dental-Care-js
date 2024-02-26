@@ -5,7 +5,7 @@ import {
 } from "../../app/features/schedule/schedule";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const Phone = () => {
   //   const [updateId, setUpdateId] = useState("");
